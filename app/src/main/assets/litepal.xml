@@ -1,0 +1,11 @@
+<litepal>
+    <dbname value="ez_weather"></dbname>
+
+    <version value="1"></version>
+
+    <list>
+        <mapping class="com.zdmelon.ezweather.db.Province"></mapping>
+        <mapping class="com.zdmelon.ezweather.db.City"></mapping>
+        <mapping class="com.zdmelon.ezweather.db.County"></mapping>
+    </list>
+</litepal>
