@@ -10,6 +10,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -35,6 +36,7 @@ import okhttp3.Response;
 
 public class WeatherActivity extends AppCompatActivity {
 
+    private static final String TAG ="zdmelon" ;
     public DrawerLayout drawerLayout;
     private Button navButton;
 
@@ -167,7 +169,8 @@ public class WeatherActivity extends AppCompatActivity {
      */
     public void requestWeather(String weatherId) {
         mWeatherId = weatherId;
-        String weatherUrl = "http://guolin.tech/api/weather?cityid="+weatherId+"&key=bc0418b57b2d4918819d3974ac1285d9";
+        Log.d(TAG, "requestWeather: "+weatherId);
+        String weatherUrl = "https://free-api.heweather.com/v5/weather?city="+weatherId+"&key=99031909294e43f18365ccaa5503728c";
         HttpUtil.sendOkHttpRequest(weatherUrl, new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
@@ -229,6 +232,7 @@ public class WeatherActivity extends AppCompatActivity {
                 infoText.setText(forecast.more.info);
                 maxText.setText(forecast.temperature.max);
                 minText.setText(forecast.temperature.min);
+                forecastLayout.addView(view);
             }
             if(weather.aqi != null){
                 aqiText.setText(weather.aqi.city.aqi);
